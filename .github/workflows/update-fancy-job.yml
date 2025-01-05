@@ -10,6 +10,9 @@ jobs:
   update-number:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Provides write access to the repository contents
+
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
@@ -38,7 +41,7 @@ jobs:
       # Step 6: Commit and Push Changes
       - name: Commit and Push Changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # The token is automatically provided by GitHub Actions
         run: |
           git add number.txt
           git commit -m "Automated update by GitHub Actions"
