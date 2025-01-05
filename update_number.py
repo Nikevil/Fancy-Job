@@ -7,16 +7,13 @@ from datetime import datetime
 script_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_dir)
 
-
 def read_number():
     with open('number.txt', 'r') as f:
         return int(f.read().strip())
 
-
 def write_number(num):
     with open('number.txt', 'w') as f:
         f.write(str(num))
-
 
 def git_commit():
     # Stage the changes
@@ -27,7 +24,6 @@ def git_commit():
     commit_message = f"Update number: {date}"
     subprocess.run(['git', 'commit', '-m', commit_message])
 
-
 def git_push():
     # Push the committed changes to GitHub
     result = subprocess.run(['git', 'push'], capture_output=True, text=True)
@@ -36,7 +32,6 @@ def git_push():
     else:
         print("Error pushing to GitHub:")
         print(result.stderr)
-
 
 def update_cron_with_random_time():
     # Generate random hour (0-23) and minute (0-59)
@@ -83,6 +78,5 @@ def main():
         print(f"Error: {str(e)}")
         exit(1)
 
-
 if __name__ == "__main__":
-    main() 
+    main()
